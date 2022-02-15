@@ -24,3 +24,5 @@ _Note: you need a chromium based browser like Chrome, Edge or Brave to install a
 5. Once you have everything go to **Scheduler** page on **BetterCampus** and click on **Load To App**.
 
 The courses will automatically load on our app and now you can use them on the scheduler."# SIA-SCRAPPING" 
+
+test commit
