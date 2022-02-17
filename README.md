@@ -1,28 +1,28 @@
-<h1 style='color: blue;'>SIA Scraping</h1>
+<h1 style='color: blue;'>SIA SCRAPER
 
-This extension allows to scrape groups info from SIA course page.
+Esta extensión permite scrapear la información de los grupos ofertados en las asignaturas publicadas en el SIA de la universidad nacional de Colombia
 
-## Instalation process
-1. If you only want the extension, download just the folder **ChromeExtension** or take it from **BetterCampus** folder after git clone.
-2. Go to the browser, open the extensions icon and click on **Manage extensions**.
-3. Enable developer mode and click on **Load Unpacked**.
-4. Select the **ChromeExtension** folder.
-5. Enable the added extension.
-6. Pin up the extension for a more comfortable use _(optional)_
+## Instalacion:
+1. Descargue la extensión y descomprima el archivo dando click derecho sobre este y seleccionando la opción Extraer en "SiaScraper\"
+2. Guarde la carpeta SiaScraper en una ubicación donde se asegure que esta no se borre o se cambie de lugar
+3. Abra su navegador, diríjase al icono de extensiones y presione en **Administrar extensiones**
+4. Active el modo desarrollador y presione el botón **Cargar extensión sin empaquetar**.
+5. Seleccione la carpeta SiaScraper, luego podrá habilitar la extensión.
+6. Ancla la extensión al navegador para un uso más cómodo _(opcional)_
 
-_Note: you need a chromium based browser like Chrome, Edge or Brave to install and use our extension._
+_Nota: Es necesario usar un navegador basado en Chomium como Google Chrome, Edge, Brave u Opera para usar nuestra extensión._
 
-## How to use
-1. Open [Catalogo de asignaturas SIA](https://sia.unal.edu.co/ServiciosApp/facespublico/public/servicioPublico.jsf?taskflowId=task-flow-AC_CatalogoAsignaturas) hyperlink on the extension.
-2. Search a curricular program and go to one course you want to scrape.
-3. On the course page click on **SAVE**, the extension will scrape the info and add it to the storage.
+## Como usar
+1. Abra el hipervínculo [Catalogo de asignaturas SIA](https://sia.unal.edu.co/ServiciosApp/facespublico/public/servicioPublico.jsf?taskflowId=task-flow-AC_CatalogoAsignaturas) en la extensión.
+2. Busque un programa curricular (carrera) y diríjase e ingrese a una asignatura.
+3. En la página de la asignatura presione el botón **Guardar asignatura**, la extensión obtendrá la información de esta y la almacenara.
 
-    - _you can download a JSON file of the course info if you need it for another purposes, or delete it form the list._
+    - _Puede descargar la información en un archivo JSON o eliminarla de la lista._
 
-4. Repeat this process with all the wanted courses.
+4. Repita este proceso con todas las asignaturas deseadas.
 
-5. Once you have everything go to **Scheduler** page on **BetterCampus** and click on **Load To App**.
+5. Cuando tenga las asignaturas guardadas diríjase a la página [Mi horario](https://bettercampus.vercel.app/calendar) y presione el botón **Cargar a BetterCampus** en nuestra extensión.
 
-The courses will automatically load on our app and now you can use them on the scheduler."# SIA-SCRAPPING" 
-
-test commit
+Las materias y sus correspondientes grupos se añadirán en la parte inferior de la página y podrá usarlos para organizar un horario."# SiaScrapper"
+    
+**Nota Importante: Tenga en cuenta que la información debe actualizarse de forma manual cuando se considere necesario, la extensión resaltara en rojo aquellas asignaturas que lleven mas de un día sin actualizarse.**
