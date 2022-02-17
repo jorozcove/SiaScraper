@@ -1,4 +1,4 @@
-<h1 style='color: blue;'>SIA SCRAPER
+<h1 style='color: blue;'>SIA SCRAPER</h1>
 
 Esta extensión permite scrapear la información de los grupos ofertados en las asignaturas publicadas en el SIA de la universidad nacional de Colombia
 
