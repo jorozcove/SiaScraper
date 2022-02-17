@@ -17,12 +17,6 @@ function padTo2Digits(num) {
       ].join(':')
     )
   }
-  
-  // 2021-10-24 16:21:23 (yyyy-mm-dd hh:mm)
-  // console.log(formatDate(new Date()))
-  
-  // 2025-05-04 05:24:07 (yyyy-mm-dd hh:mm)
-  //   console.log(formatDate(new Date('May 04, 2025 05:24:07')))
 
 //get a list of the current courses
 function getCoursesList(){

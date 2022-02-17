@@ -1,6 +1,9 @@
 // fetch the items stored in entension localStorage and load into the popup
 function fetchItems(){
 
+    var version = "v1.0.0"
+    document.getElementById("title").innerText = "SIA SCRAPER "+version
+
     const itemsList = document.querySelector("div#todo-container")
     itemsList.innerHTML = ""
     var newInnerHtml = " "
@@ -10,57 +13,77 @@ function fetchItems(){
         var itemsArr = JSON.parse(itemsStorage)
         var itemStatus;
 
-        for(var i = 0; i<itemsArr.length; i++){
-
-            itemStatus = itemsArr[i].status ? "checked" : ""
-            newInnerHtml += `
-            <div class="col col-12 p-2 todo-item" todo-id="${i}">
-            <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input class = "itemCheck" type="checkbox" aria-label="Checkbox for following text input" ${itemStatus} >
-              </div>
-            </div>
-            <input type="text" readonly class="form-control" aria-label="Text input with checkbox"
-              value="${itemsArr[i].nombreAsignatura} [${itemsArr[i].fechaObtencion}]">
-            <div class="input-group-append">
-            <button todo-id="${i}" class="itemDownload btn btn-outline-secondary bg-info text-white" type="button"
-                id="button-addon1 "><i class="fa fa-download"></i></button>
-
-              <button todo-id="${i}" class="itemDelete btn btn-outline-secondary bg-danger text-white" type="button"
-                id="button-addon2 ">X</button>
-            </div>
-            </div>
-            </div>
-            `
+        if(itemsArr.length == 0){
+            itemsList.innerHTML = `<div class="d-flex justify-content-center">
+                                <div>Agrega asignaturas desde el catalogo</div>
+                                <br></br>
+                            </div>`
         }
+        else{
 
-        itemsList.innerHTML = newInnerHtml;
+            var currDate = new Date()
+            var courseDate
+            var dateCondition = false
+
+            for(var i = 0; i<itemsArr.length; i++){
+
+                currDate = new Date()
+                courseDate = new Date(itemsArr[i].fechaObtencion)
+                currDate.setDate(currDate.getDate() - 1)
+                dateCondition = currDate > courseDate
+
+                itemStatus = itemsArr[i].status ? "checked" : ""
+                newInnerHtml += `
+                <div class="col col-12 p-2 todo-item" todo-id="${i}">
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            <input class = "itemCheck" type="checkbox" ${itemStatus}>
+                        </div>
+                        
+                        <input type="text" readonly class="form-control" aria-label="Text input with checkbox" ${dateCondition && 'style = "border-color: #e90000 !important; color: #e90000;"'}
+                        value="${itemsArr[i].nombreAsignatura}" data-bs-toggle="tooltip" data-bs-placement="top" title="${dateCondition ? "Asignatura desactualizada " : ""}[${itemsArr[i].fechaObtencion}]">
+                        <div class="input-group-append">
+
+                        <button todo-id="${i}" class="itemDownload btn btn-outline-secondary bg-info text-white" type="button"
+                             id="button-addon1 "><i class="fa fa-download"></i>
+                        </button>
+
+                        <button todo-id="${i}" class="itemDelete btn btn-outline-secondary bg-danger text-white" type="button"
+                            id="button-addon2 ">X
+                        </button>
+                        </div>
+                    </div>
+                </div>
+                `
+            }
+
+            itemsList.innerHTML = newInnerHtml;
         
-        var iList = document.querySelector("div#todo-container").children
-
-        //add specific functionality for each item
-        for(var i = 0; i<iList.length; i++){
-            // save everytime checked something
-            iList[i].querySelector(".itemCheck").addEventListener("click", (function(i){
-                return function(){
-                    changeCheckValue(i)
-                }
-            })(i))
-
-            // add download function
-            iList[i].querySelector(".itemDownload").addEventListener("click", (function(i){
-                return function(){
-                    itemDownload(i)
-                }
-            })(i))
-
-            // add delete function
-            iList[i].querySelector(".itemDelete").addEventListener("click", (function(i){
-                return function(){
-                    itemDelete(i)
-                }
-            })(i))
+            var iList = document.querySelector("div#todo-container").children
+    
+            //add specific functionality for each item
+            for(var i = 0; i<iList.length; i++){
+                // save everytime checked something
+                iList[i].querySelector(".itemCheck").addEventListener("click", (function(i){
+                    return function(){
+                        changeCheckValue(i)
+                    }
+                })(i))
+    
+                // add download function
+                iList[i].querySelector(".itemDownload").addEventListener("click", (function(i){
+                    return function(){
+                        itemDownload(i)
+                    }
+                })(i))
+    
+                // add delete function
+                iList[i].querySelector(".itemDelete").addEventListener("click", (function(i){
+                    return function(){
+                        itemDelete(i)
+                    }
+                })(i))
+            }
         }
         
         
@@ -94,6 +117,15 @@ function itemDelete(index){
     saveItems(itemsArr)
 
     document.querySelector('div#todo-container .todo-item[todo-id="'+index+'"]').remove()
+
+    const itemsList = document.querySelector("div#todo-container")
+    if(itemsArr.length == 0){
+        itemsList.innerHTML = `<div class="d-flex justify-content-center">
+                            <div>Agrega asignaturas desde el catalogo</div>
+                            <br></br>
+                        </div>`
+    }
+
 }
 
 //donwload the item from the stoage by index
@@ -129,6 +161,7 @@ function getChkItems(){
 }
 
 function main(){
+
     //set empty list in local storage if it don't exist
     if(localStorage.getItem('todo-items')==undefined) localStorage.setItem('todo-items','[]')
 

@@ -1,6 +1,7 @@
 {
-    "name": "siaScrapping",
-    "version": "1.0",
+    "name": "Sia Scraper",
+    "description": "Una herramienta que le permitirá obtener la información de los grupos ofertados en las asignaturas publicadas en el SIA de la Universidad Nacional de Colombia",
+    "version": "1.0.0",
     "manifest_version": 2,
     "content_scripts": [
       {
@@ -10,10 +11,12 @@
     ],
     "browser_action": {
       "default_popup": "popup.html",
-      "default_title": "siaScrapping"
+      "default_title": "Sia Scraper",
+      "default_icon": "/Assets/Logo-SiaScraper.png"
     },
     "permissions": [
         "tabs",
         "storage"
-    ]
+    ],
+    "icons": { "800": "/Assets/Logo-SiaScraper.png"}
   }
