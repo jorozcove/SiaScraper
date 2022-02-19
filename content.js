@@ -1,3 +1,5 @@
+// Copyright (c) 2022 Sia Scraper | Juan Orozco
+
 //date functions
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0')
