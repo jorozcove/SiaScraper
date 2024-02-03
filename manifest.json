@@ -1,7 +1,7 @@
 {
     "name": "Sia Scraper",
     "description": "Una herramienta que le permitirá obtener la información de los grupos ofertados en las asignaturas publicadas en el SIA de la Universidad Nacional de Colombia",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "manifest_version": 2,
     "content_scripts": [
       {
